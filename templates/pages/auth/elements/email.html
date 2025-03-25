@@ -1,0 +1,10 @@
+<!-- EMAIL -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3" for="email">email</label>
+        {% if email_message %}
+            <p class="system-message">{{email_message}}</p>
+        {% endif %}
+    </div>
+    <input type="text" name="email" class="{% if email_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if tmp_email %}value="{{tmp_email}}"{%endif%}>
+</div>

@@ -1,0 +1,10 @@
+<!-- LAST NAME -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3" for="last_name">Last name</label>
+        {% if last_name_message %}
+            <p class="system-message">{{last_name_message}}</p>
+        {% endif %}
+    </div>
+    <input type="text" name="last_name" class="{% if last_name_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if tmp_last_name %}value="{{tmp_last_name}}"{%endif%} maxlength="75">
+</div>

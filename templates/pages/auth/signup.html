@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/auth.css') }}">
+{% endblock %}
+{% block content %}
+    <div id="auth">
+        <div class="auth-image" style="background: url({{ url_for('static', path='images/preview-1.jpg') }}); background-size: cover !important; background-position: center !important;"></div>
+        <form class="mode-background-1 pd-20 br-10" method="post" action="/auth/signup">
+
+            <div class="form-title">
+                <h1 class="mode-color-text-1 title title-3">{{ current_page }}</h1>
+            </div>
+
+            <div class="wrapper-input-fields-2">
+                {% include "pages/auth/elements/first_name.html" %}
+                {% include "pages/auth/elements/last_name.html" %}
+            </div>
+            {% include "pages/auth/elements/email.html" %}
+            {% include "pages/auth/elements/phone.html" %}
+            <div class="wrapper-input-fields-2">
+                {% include "pages/auth/elements/country_city.html" %}
+            </div>
+            <div class="wrapper-input-fields-2">
+                {% include "pages/auth/elements/password.html" %}
+                {% include "pages/auth/elements/confirm_password.html" %}
+            </div>
+            
+
+            <!-- BUTTON -->
+            <div class="input-field">
+                <button class="btn-small br-5 theme-background-hover">Sign Up</button>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}
+{% block scripts %}{% endblock %}

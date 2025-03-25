@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Application - {{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/path.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/navigation.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/plan.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/content.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/pagination.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/themes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/titles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/btns.css') }}">
+
+    {% block styles %}
+        <style>
+
+        </style>
+    {% endblock %}
+</head>
+<body class="dark">
+    <section id="app">
+        <!-- NAVIGATION -->
+        <section id="navigation" class="mode-background-1 pd-20">
+            <div class="wrinner">
+                <div class="logotype">
+                    <div class="logotype-circle logotype-circle-left"></div>
+                    <div class="logotype-circle logotype-circle-right theme-background"></div>
+                </div>
+
+                <div class="wrapper">
+                    <div class="menu-btn">
+                        <div class="menu-btn-line menu-btn-line-top"></div>
+                        <div class="menu-btn-line menu-btn-line-middle"></div>
+                        <div class="menu-btn-line menu-btn-line-bottom"></div>
+                    </div>
+
+                    {# USER MENU #}
+                    {% include "/elements/user_menu.html" %}
+                
+                </div>
+            </div>
+        </section>
+
+        <!-- LEFT SECTION -->
+        <section id="left-section">
+            <div class="content mode-background-3">
+                {% include "elements/popup.html" %}
+                {% block content %}{% endblock %}
+            </div>
+            <!-- FOOTER -->
+            <div class="footer mode-background-1">
+                <div class="wrinner">
+                    <p class="mode-color-text-2 title-5">All rights reserved</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RIGHT SECTION -->
+        <section id="right-section">
+            
+            {# PLAN #}
+            {# {% include "/elements/plan.html" %} #}
+
+            {# MENU #}
+            {% include "/elements/menu.html" %}
+            
+        </section>
+
+        
+    </section>
+    <script src="{{ url_for('static', path='js/navigation.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
+    
+</body>
+</html>

@@ -1,0 +1,10 @@
+<!-- Phone -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3" for="last_name">Phone</label>
+        {% if phone_message %}
+            <p class="system-message">{{phone_message}}</p>
+        {% endif %}
+    </div>
+    <input type="text" name="phone" class="{% if phone_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if tmp_phone %}value="{{tmp_phone}}"{%endif%} maxlength="50">
+</div>

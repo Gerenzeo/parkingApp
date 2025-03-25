@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/auth.css') }}">
+{% endblock %}
+{% block content %}
+    
+    {% if registration_message or error_message %}
+        <div id="popup" class="pop-up-message {% if registration_message %}success{%endif%} {% if error_message %}error{%endif%} br-10">
+            {% if registration_message %}
+                <p>{{ registration_message }}</p>
+            {% endif %}
+
+            {% if error_message %}
+                <p>{{ error_message }}</p>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div id="auth">
+        <div class="auth-image" style="background: url({{ url_for('static', path='images/preview-1.jpg') }}); background-size: cover !important; background-position: center !important;"></div>
+        <form class="mode-background-1 pd-20 br-10" method="post" action="/auth/login">
+            
+            <div class="form-title">
+                <h1 class="mode-color-text-1 title title-3">{{ current_page }}</h1>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="input-field">
+                <div class="input-field-label">
+                    <label class="mode-color-text-1 title title-3">email</label>
+                    {% if email_message %}
+                        <p class="system-message">{{email_message}}</p>
+                    {% endif %}
+                </div>
+                <input type="text" name="email" class="{% if email_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if tmp_email %}value="{{tmp_email}}"{%endif%}>
+            </div>
+
+
+             <!-- PASSWORD -->
+            <div class="input-field">
+                <div class="input-field-label">
+                    <label class="mode-color-text-1 title title-3">password</label>
+                    {% if password_message %}
+                        <p class="system-message">{{password_message}}</p>
+                    {% endif %}
+                </div>
+                <input type="password" name="password" class="{% if password_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off">
+            </div>
+
+            <!-- BUTTON -->
+            <div class="input-field">
+                <button class="btn-small br-5 theme-background-hover">Login</button>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}
+{% block scripts %}{% endblock %}

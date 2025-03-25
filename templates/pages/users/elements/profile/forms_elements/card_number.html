@@ -1,0 +1,20 @@
+<!-- CARD NUMBER -->
+<div class="input-field cl-50">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3" for="card_number">Card Number</label>
+        {% if card_number_message %}
+            <p class="system-message">{{card_number_message}}</p>
+        {% endif %}
+    </div>
+    <input type="text" id="card_number" placeholder="0000 0000 0000 0000" name="card_number" 
+        class="{% if card_number_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" 
+        autocomplete="off" {% if tmp_card_number %}value="{{tmp_card_number}}"{%endif%} maxlength="19">
+</div>
+
+<script>
+    document.getElementById('card_number').addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, ''); // Удаляем все нецифровые символы
+        value = value.replace(/(.{4})/g, '$1 ').trim(); // Добавляем пробел каждые 4 цифры
+        e.target.value = value;
+    });
+</script>

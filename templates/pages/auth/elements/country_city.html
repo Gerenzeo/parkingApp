@@ -1,0 +1,52 @@
+{# COUNTRY #}
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3" for="country">Country</label>
+        {% if country_message %}
+            <p class="system-message">{{country_message}}</p>
+        {% endif %}
+    </div>
+    <select id="country" class="mode-background-3 mode-color-text-1" name="country">
+        <option value="">Select a country</option>
+        {% for country in countries %}
+            <option value="{{ country.name }}">{{ country.name }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+{# CITY #}
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3" for="city">City</label>
+        {% if city_message %}
+            <p class="system-message">{{city_message}}</p>
+        {% endif %}
+    </div>
+    <select id="city" class="mode-background-3 mode-color-text-1" name="city">
+        <option value="">Select a city</option>
+    </select>
+</div>
+
+<script>
+    document.getElementById("country").addEventListener("change", function () {
+        let countryId = this.value;
+        let citySelect = document.getElementById("city");
+
+        citySelect.innerHTML = '<option value="">Select a city</option>';
+        citySelect.disabled = true;
+
+        if (countryId) {
+            fetch(`/cities/?country_name=${countryId}`)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(city => {
+                        let option = document.createElement("option");
+                        option.value = city.name;  // Теперь передается name города
+                        option.textContent = city.name;
+                        citySelect.appendChild(option);
+                    });
+                    citySelect.disabled = false;
+                });
+        }
+    });
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/application.css') }}">
+    <style>
+    </style>
+</head>
+<body> 
+    <div id="initialization">
+        <form action="/application/step-1/success" method="post">
+            <!-- PROJECT NAME -->
+            <div class="input-field">
+                <div class="input-field-label">
+                    <label for="project_name">Project name</label>
+                    {% if project_name_message %}
+                        <span class="error-message">{{ project_name_message }}</span>
+                    {% endif %}
+                </div>
+                
+                <input {% if tmp_project_name %}value="{{ tmp_project_name }}" {% endif %} id="project_name" autocomplete="off" type="text" name="project_name" placeholder="ParkingApp">
+            </div>
+
+            <div class="input-field-button">
+                <div class="input-field-left">
+                    <!-- <a href="/application/step-1">To step 1</a> -->
+                </div>
+                <div class="input-field-right">
+                    <button>Step 2</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

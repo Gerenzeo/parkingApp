@@ -1,0 +1,83 @@
+{% if event == 'show-client' %}
+
+
+    <div class="client-date">
+        {% if selected_place.start_date and selected_place.end_date %}
+
+            <div class="status-payment">
+                {% if selected_place.status_payment %}
+                    <p class="title title-5 mode-color-text-2">Payment status:</p>
+                    <p class="mode-color-text-1">PAID</p>
+                {% else %}
+                    <div class="payment-block-information">
+                        <a href="/payments/{{client.unique_code}}/send-email/send-check">Send check to email</a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="date-period">
+                <div class="client-date-block client-date-to">
+                    <p class="title title-5 mode-color-text-2">Start Date (<a href="/parking/{{event}}/{{selected_place.unique_key}}/date/set-date" class="theme-color-hover">edit</a>)</p>
+                    <div class="client-date-info mode-color-text-2">
+                        {% include '/icons/calendar.svg' %}
+                        <p class="mode-color-text-1">{{ selected_place.start_date.strftime("%d-%m-%Y") }}</p>
+                    </div>
+                </div>
+                <div class="client-date-block client-date-to">
+                    <p class="title title-5 mode-color-text-2">End Date (<a href="/parking/{{event}}/{{selected_place.unique_key}}/date/set-date" class="theme-color-hover">edit</a>)</p>
+                    <div class="client-date-info mode-color-text-2">
+                        {% include '/icons/calendar.svg' %}
+                        <p class="mode-color-text-1">{{ selected_place.end_date.strftime("%d-%m-%Y") }}</p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            {% if client.email %}
+                <div class="client-date-block client-date-to">
+                    <a class="title title-4 theme-color-hover" href="/parking/{{event}}/{{selected_place.unique_key}}/date/set-date">Set date period</a>
+                </div>
+            {% else %}
+                <p class="mode-color-text-1" style="font-size: 11px; color: #c01033;">Please add the customer's email address! This will give the possibility to choose the date and the possibility of payment!</p>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="client-information-blocks">
+        <div class="client-information-blocks-left">
+            {# FULL NAME #}
+            <div class="client-info-block">
+                <p class="title title-5 mode-color-text-2">Full name</p>
+                <span class="text mode-color-text-1">{{ client.first_name }} {{ client.last_name }}</span>
+            </div>
+
+            {% if client.phone %}
+                {# PHONE #}
+                <div class="client-info-block">
+                    <p class="title title-5 mode-color-text-2">Phone</p>
+                    <span class="text mode-color-text-1">{{ client.phone }}</span>
+                </div>
+            {% endif %}
+            
+            {% if client.email %}
+                {# EMAIL #}
+                <div class="client-info-block">
+                    <p class="title title-5 mode-color-text-2">Email</p>
+                    <span class="text mode-color-text-1">{{ client.email }}</span>
+                </div>
+            {% endif %}
+        </div>
+        <div class="client-information-blocks-right">
+            {# CAR MODEL #}
+            <div class="client-info-block">
+                <p class="title title-5 mode-color-text-2">Car (<a href="/clients/update/{{client.unique_code}}" class="theme-color-hover">edit</a>)</p>
+                <span class="text mode-color-text-1">{{ client.car_brand }} | {{ client.car_model }}</span>
+            </div>
+
+            {# CAR PLATE #}
+            <div class="client-info-block">
+                <p class="title title-5 mode-color-text-2">Plate</p>
+                <span class="text mode-color-text-1">{{ client.plate | upper }}</span>
+            </div>
+        </div>
+
+    </div>
+
+{% endif %}

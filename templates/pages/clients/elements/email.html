@@ -1,0 +1,17 @@
+
+<!-- Email -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3">Email</label>
+        {% if email_message %}
+            <p class="system-message">{{ email_message }}</p>
+        {% endif %}
+    </div>
+    <input placeholder="martin_lee@gmail.com" maxlength="150" type="text" name="email" class="{% if email_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" 
+    {% if client %}
+        value="{{ client.email }}"
+    {% else %}
+        {% if email %}value="{{ email }}"{%endif%}
+    {% endif %}
+    >
+</div>

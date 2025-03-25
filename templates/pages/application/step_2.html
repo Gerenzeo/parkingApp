@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/application.css') }}">
+    <style>
+    </style>
+</head>
+<body> 
+    <div id="initialization">
+        <form action="/application/step-2/success" method="post">
+            
+            <div class="form-title">
+                <h2>Application initialization</h2>
+                <h3>Step 2</h3>
+            </div>
+
+            <!-- FULL NAME -->
+            <div class="input-field">
+                <div class="input-field-label">
+                    <label for="full_name">Full name</label>
+                    {% if full_name_message %}
+                        <span class="error-message">{{ full_name_message }}</span>
+                    {% endif %}
+                </div>
+                <input {% if tmp_full_name %}value="{{tmp_full_name}}"{% endif %} id="full_name" autocomplete="off" type="text" name="full_name" placeholder="John Dou">
+            </div>
+
+            <!-- EMAIL -->
+            <div class="input-field">
+                <div class="input-field-label">
+                    <label for="email">Email</label>
+                    {% if email_message %}
+                        <span class="error-message">{{ password_message }}</span>
+                    {% endif %}
+                </div>
+                <input {% if tmp_email %}value="{{tmp_email}}"{% endif %} id="email" autocomplete="off" type="text" name="email" placeholder="john_dou@mail.com">
+            </div>
+
+
+            <div class="input-field-wrapper-2">
+                <!-- PASSWORD -->
+                <div class="input-field">
+                    <div class="input-field-label">
+                        <label for="password">Password</label>
+                    </div>
+                    <input id="password" autocomplete="off" type="password" name="password" placeholder="2jKm4-mNel3_299kx9">
+                </div>
+
+                <!-- CONFIRM PASSWORD -->
+                <div class="input-field">
+                    <div class="input-field-label">
+                        <label for="confirm_password">Confirm Password</label>
+                        {% if password_message %}
+                            <span class="error-message">{{ password_message }}</span>
+                        {% endif %}
+                    </div>
+                    <input id="confirm_password" autocomplete="off" type="password" name="confirm_password" placeholder="2jKm4-mNel3_299kx9">
+                </div>
+            </div>
+
+
+            <div class="input-field-button">
+                <div class="input-field-left">
+                    <a href="/application/step-1">To step 1</a>
+                </div>
+                <div class="input-field-right">
+                    <button style="width: fit-content;">start initialization</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!-- Phone -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3">Phone</label>
+        {% if phone_message %}
+            <p class="system-message">{{ phone_message }}</p>
+        {% endif %}
+    </div>
+    <input id="phone" placeholder="+122495663492" maxlength="25" type="text" name="phone" class="{% if phone_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" 
+    {% if client %}
+        value="{{ client.phone }}"
+    {% else %}
+        {% if phone %}value="{{ phone }}"{%endif%}
+    {% endif %}
+    >
+</div>

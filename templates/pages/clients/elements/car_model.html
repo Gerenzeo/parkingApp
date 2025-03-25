@@ -1,0 +1,16 @@
+<!-- Car Model -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3">Car model</label>
+        {% if car_model_message %}
+            <p class="system-message">{{ car_model_message }}</p>
+        {% endif %}
+    </div>
+    <input placeholder="A5" maxlength="50" type="text" name="car_model" class="{% if car_model_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" 
+    {% if client %}
+        value="{{ client.car_model }}"
+    {% else %}
+        {% if car_model %}value="{{ car_model }}"{%endif%}
+    {% endif %}
+    >
+</div>

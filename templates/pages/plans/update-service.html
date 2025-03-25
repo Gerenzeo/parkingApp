@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/create.css') }}">
+{% endblock %}
+{% block content %}
+    
+    {# PATH #}
+    <div class="path mode-background-2">
+        <div class="wrinner">
+            <div class="path-line">
+                <a href="/{{current_page}}" class="title title-4 theme-color-hover">{{ current_page }}</a>
+                <span class="title title-4 mode-color-text-1">/</span>
+                <p class="title title-4 mode-color-text-1">{{plan.name}} - update {{ service.name }}</p>
+            </div>
+        </div>
+    </div>
+
+    {# SERVICES #}
+    <section id="general-content">
+        <div class="wrinner">
+            {# FORM #}
+            <form class="mode-background-1 pd-20 br-10" method="post" action="/plans/{{plan.code}}/update-service-{{service.id}}">
+                
+                <div class="form-title">
+                    <h1 class="mode-color-text-1 title title-3">+ update service</h1>
+                </div>
+
+                
+
+                <!-- WRAPPER -->
+                <div class="wrapper-input-fields-2">
+                    {% include "/pages/plans/elements/services/name.html" %}
+                    {% include "/pages/plans/elements/services/price.html" %}
+                </div>
+
+                {% include "/pages/plans/elements/services/svg_icon.html" %}
+                {% include "/pages/plans/elements/services/custom.html" %}
+
+                <!-- BUTTON -->
+                <div class="input-field-button">
+                    <button class="btn-small br-5 theme-background-hover">Save</button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+{% endblock %}
+{% block scripts %}{% endblock %}

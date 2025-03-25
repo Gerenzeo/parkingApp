@@ -1,0 +1,13 @@
+<div class="user-menu">
+    {% if current_user %}
+        <div class="profile-menu">
+            <div class="profile-menu-btn">
+                <a href="/profile?tab=general">
+                    {% include 'icons/profile.svg'%}
+                </a>
+            </div>
+        </div>
+    {% else %}
+        <a href="/auth/login" class="btn-small br-5 theme-background-hover">Login</a> 
+    {% endif %}
+</div>

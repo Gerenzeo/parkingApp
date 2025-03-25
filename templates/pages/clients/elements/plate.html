@@ -1,0 +1,16 @@
+<!-- Car Plate -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3">Car plate</label>
+        {% if plate_message %}
+            <p class="system-message">{{ plate_message }}</p>
+        {% endif %}
+    </div>
+    <input placeholder="AA5584BI" maxlength="40" type="text" name="plate" class="{% if plate_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" 
+    {% if client %}
+        value="{{ client.plate }}"
+    {% else %}
+    {% if plate %}value="{{ plate }}"{%endif%}
+    {% endif %}
+    >
+</div>

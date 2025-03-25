@@ -1,0 +1,61 @@
+<style>
+    #preview {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background-color: transparent;
+        padding: 20px;
+    }
+
+    .preview-image {
+        position: absolute;
+        top: -4%;
+        left: -4%;
+        width: 110%;
+        height: 105%;
+        background: url('{{ url_for("static", path="images/preview-1.jpg") }}') no-repeat center center / cover;
+        filter: blur(5px) grayscale(50%); /* Фильтр применяется только к картинке */
+        z-index: 1; /* Находится под текстом */
+    }
+
+    .inner {
+        position: relative;
+        z-index: 2; /* Текст выше картинки */
+        color: #fff;
+    }
+
+    .preview-title h1 {
+        font-size: 50px;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .preview-title h3 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .preview-order {
+        margin-top: 20px;
+    }
+
+</style>
+<div id="preview">
+    <div class="preview-image"></div>
+    <div class="inner">
+        <div class="preview-title">
+            <h1 class="title title-3">Parking application</h1>
+            <h3 class="theme-color">All cars in one place...</h3>
+        </div>
+        <div class="preview-order">
+            <a href="/parking" class="btn-big theme-background-hover br-10">Parking</a>
+        </div>
+    </div>
+</div>

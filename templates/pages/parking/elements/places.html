@@ -1,0 +1,45 @@
+<div class="parking-places">
+    <div class="wrapper-places">
+        {% for place in places %}
+            <div class="place-block {% if place.available %}place-block-open{% else %}place-block-close{% endif %} br-5 pd-10">
+                <div class="place-block-status">
+                    {% if place.available %}
+                        <p class="status status-open"></p>
+                    {% else %}
+                        <p class="status status-close"></p>
+                    {% endif %}
+                </div>
+                <div class="place-block-number">
+                    <p class="mode-color-text-1">{{ place.index }}</p>
+                </div>
+
+                <div class="place-services">
+                    {% if place_services %}
+                        {% for place_service in place_services %}
+                            {% if place_service.service_active and place.id == place_service.place_id %}
+                                <div class="places-services-block">
+                                    {{ place_service.service.icon_svg | safe }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                {% if place.available %}
+                    <div class="add-client">
+                        <a href="/parking?place={{place.unique_key}}&event=add-client&type=new-client">
+                            {% include 'icons/person-add.svg'%}
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="show-client mode-background-2">
+                        <a class="mode-color-text-1" href="/parking?place={{place.unique_key}}&event=show-client&type={{client.unique_code}}">
+                            {% include 'icons/person-fill.svg'%}
+                        </a>
+                    </div>
+                {% endif %}
+
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        form {
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    
+    {# PATH #}
+    <div class="path mode-background-2">
+        <div class="wrinner">
+            <div class="path-line">
+                <a href="/{{current_page}}" class="title title-4 theme-color-hover">{{ current_page }}</a>
+                <span class="title title-4 mode-color-text-1">/</span>
+                <p class="title title-4 mode-color-text-1">Set Date</p>
+            </div>
+        </div>
+    </div>
+
+    {# SERVICES #}
+    <section id="general-content">
+        <div class="wrinner">
+            {# FORM #}
+            <form class="mode-background-1 pd-20 br-10" method="post" action="/parking/{{event}}/{{place.unique_key}}/date/set-date/success">
+                
+
+                <div class="wrapper">
+                    <!-- START DATE -->
+                    <div class="input-field">
+                        <div class="input-field-label">
+                            <label class="mode-color-text-1 title title-3">Start date</label>
+                            {% if start_date_message %}
+                                <p class="system-message">{{ start_date_message }}</p>
+                            {% endif %}
+                        </div>
+                        <input type="date" value="{% if place.start_date %}{{ place.start_date.strftime('%Y-%m-%d') }}{% endif %}" 
+                        name="start_date" id="start_date" 
+                        class="{% if start_date_message %}bound-element error-border{% endif %} mode-background-3 mode-color-text-1" 
+                        autocomplete="off">
+                    </div>
+
+                    <!-- END DATE -->
+                    <div class="input-field">
+                        <div class="input-field-label">
+                            <label class="mode-color-text-1 title title-3">End date</label>
+                            {% if end_date_message %}
+                                <p class="system-message">{{ end_date_message }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <input type="date" value="{% if place.end_date %}{{ place.end_date.strftime('%Y-%m-%d') }}{% endif %}" name="end_date" id="end_date" class="{% if end_date_message %}bound-element error-border{% endif %} mode-background-3 mode-color-text-1" autocomplete="off">
+                    </div>
+                </div>
+                
+
+                <!-- BUTTON -->
+                <div class="input-field-button">
+                    <button class="btn-small br-5 theme-background-hover">
+                        {% if place.start_date and place.end_date %}
+                            Save
+                        {% else %}
+                            Set date
+                        {% endif %}
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block scripts %}
+  
+{% endblock %}
+

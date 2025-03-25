@@ -1,0 +1,45 @@
+{# GENERAL #}
+{% if tab == "general" %}
+    <div class="profile-content-block">
+        <div class="profile-content-block-left">
+            {# FULL NAME #}
+            <div class="profile-content-block-item">
+                <p class="title-5 mode-color-text-2">Full name</p>
+                <h3 class="title-4 mode-color-text-1">{{ current_user.full_name }}</h3>
+            </div>
+
+            {# EMAIL #}
+            <div class="profile-content-block-item">
+                <p class="title-5 mode-color-text-2">Email</p>
+                <h3 class="title-4 mode-color-text-1">{{ current_user.email }}</h3>
+            </div>
+
+            {# PHONE #}
+            <div class="profile-content-block-item">
+                <p class="title-5 mode-color-text-2">Phone {% if phone_message %}{{ phone_message }}{% endif %}</p>
+
+                {% if current_user.phone %}
+                    <h3 class="title-4 mode-color-text-1">{{ current_user.phone }}</h3>
+                {% else %}
+                    <form action="/profile/{{tab}}/update-phone" method="post">
+                        <div class="input-field">
+                            <input placeholder="+380509998877" maxlength="100" type="text" id="phone" name="phone" class="{% if phone_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if current_user.phone %}value="{{ current_user.phone }}" {% endif %}>
+                            <button class="btn-small br-5 theme-background-hover">add</button>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+        <div class="profile-content-block-right">
+            <div class="profile-content-block-item">
+                <p class="title-5 mode-color-text-2">Country</p>
+                <h3 class="title-4 mode-color-text-1">{{ current_user.country }}</h3>
+            </div>
+
+            <div class="profile-content-block-item">
+                <p class="title-5 mode-color-text-2">City</p>
+                <h3 class="title-4 mode-color-text-1">{{ current_user.city }}</h3>
+            </div>
+        </div>
+    </div>
+{% endif %}

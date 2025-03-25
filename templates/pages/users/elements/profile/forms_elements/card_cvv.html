@@ -1,0 +1,10 @@
+<!-- CARD CVV -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3" for="card_cvv">CVV</label>
+        {% if card_cvv_message %}
+            <p class="system-message">{{card_cvv_message}}</p>
+        {% endif %}
+    </div>
+    <input type="text" placeholder="111" name="card_cvv" class="{% if card_cvv_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if tmp_card_cvv %}value="{{tmp_card_cvv}}"{%endif%} maxlength="3">
+</div>

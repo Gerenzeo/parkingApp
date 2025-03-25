@@ -1,0 +1,34 @@
+<div class="menu-title">
+    <h3 class="mode-color-text-1 title title-5">Navigation</h3>
+</div>
+<div class="menu">
+    <a href="/" class="title title-3 mode-color-text-2-hover {% if current_page == 'home' %}active{%endif%}"><span class="mode-background-2 menu-circle {% if current_page == 'home' %}menu-circle-active{%endif%}"></span>Home</a>
+    <a href="/parking" class="title title-3 mode-color-text-2-hover {% if current_page == 'parking' %}active{%endif%}"><span class="mode-background-2-hover menu-circle {% if current_page == 'parking' %}menu-circle-active{%endif%}"></span>Parking</a>
+    <a href="/clients" class="title title-3 mode-color-text-2-hover {% if current_page == 'clients' %}active{%endif%}"><span class="mode-background-2-hover menu-circle {% if current_page == 'clients' %}menu-circle-active{%endif%}"></span>Clients</a>
+    <a href="/info" class="title title-3 mode-color-text-2-hover"><span class="mode-background-2 menu-circle"></span>Info</a>
+</div>
+
+
+{% if current_user %}
+    {% if current_user.role.role_name == "superuser" %}
+        <div class="menu-title">
+            <h3 class="mode-color-text-1 title title-5">System</h3>
+        </div>
+        <div class="menu">
+            <a href="/plans" class="title title-3 mode-color-text-2-hover {% if current_page == 'plans' %}active{%endif%}"><span class="mode-background-2-hover menu-circle {% if current_page == 'plans' %}menu-circle-active{%endif%}"></span>Plans</a>
+            <a href="/users" class="title title-3 mode-color-text-2-hover {% if current_page == 'users' %}active{%endif%}"><span class="mode-background-2-hover menu-circle {% if current_page == 'users' %}menu-circle-active{%endif%}"></span>Users</a>
+            <a href="/services" class="title title-3 mode-color-text-2-hover {% if current_page == 'services' %}active{%endif%}"><span class="mode-background-2-hover menu-circle {% if current_page == 'services' %}menu-circle-active{%endif%}"></span>Services</a>
+        </div>
+    {% endif %}
+{% endif %}
+
+
+{% if not current_user %}
+    <div class="menu-title">
+        <h3 class="mode-color-text-1 title title-5">Authorization</h3>
+    </div>
+    <div class="menu">
+        <a href="/auth/login" class="title title-3 mode-color-text-2-hover {% if current_page == 'login' %}active{%endif%}"><span class="mode-background-2-hover menu-circle {% if current_page == 'login' %}menu-circle-active{%endif%}"></span>Login</a>
+        <a href="/auth/signup" class="title title-3 mode-color-text-2-hover {% if current_page == 'signup' %}active{%endif%}"><span class="mode-background-2-hover menu-circle {% if current_page == 'signup' %}menu-circle-active{%endif%}"></span>Signup</a>
+    </div>
+{% endif %}

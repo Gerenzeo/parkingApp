@@ -1,0 +1,16 @@
+
+
+
+
+<form class="" action="/parking/{{place}}/{{event}}/{{type}}/add-new-client" method="post">
+    <div class="wrapper">
+        {% include 'pages/clients/elements/first_name.html'%}
+        {% include 'pages/clients/elements/last_name.html'%}
+    </div>
+    {% include 'pages/clients/elements/phone.html'%}
+
+    <!-- BUTTON -->
+    <div class="input-field-button">
+        <button class="btn-small br-5 theme-background-hover">Create</button>
+    </div>
+</form>

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/create.css') }}">
+    <style>
+        .order-block {
+            width: 250px;
+        }
+        .order-block .request-time {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .order-block .request-time p {
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .order-block .request-time span {
+            color: #4aab4d;
+        }
+        .order-block .order-block-button {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #333;
+        }
+        .order-block .order-block-button a {
+            padding: 5px;
+            width: 100%;
+            max-width: none;
+            display: flex;
+            font-weight: 300;
+            border-radius: 4px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    
+    {# PATH #}
+    <div class="path mode-background-2">
+        <div class="wrinner">
+            <div class="path-line">
+                <a href="/{{current_page}}" class="title title-4 theme-color-hover">{{ current_page }}</a>
+            </div>
+        </div>
+    </div>
+
+    {# CONTENT #}
+    <section id="general-content">
+        <div class="wrinner">
+
+            <div class="orders">
+                
+                <div class="order-block mode-background-1 pd-10 br-5">
+                    <a href="/orders/order-plan" class="theme-color-hover">Plans</a>
+                    <div class="request-time">
+                        <p class="mode-color-text-2">Request time</p>
+                        <span class="title title-5">3 min</span>
+                    </div>
+                    <div class="order-block-button">
+                        <a href="/orders/order-plan" class="btn-small theme-background-hover br-10">Check</a>
+                    </div>
+                </div>
+            
+            
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block scripts %}
+{% endblock %}

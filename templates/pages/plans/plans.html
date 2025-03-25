@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <style>
+        .sub-blocks {
+            display: flex;
+            flex-direction: column;
+            padding-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid transparent;
+            width: 100%;
+            padding-bottom: 20px;
+        }
+        .sub-blocks:last-child {
+            margin-bottom: 0;
+            border-bottom: 0;
+        }
+        .service-block {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            width: 40%;
+        }
+        .service-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+        }
+        .service-actions a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+        .service-actions a svg {
+            width: 80%;
+            height: 80%;
+        }
+        
+    </style>
+{% endblock %}
+{% block content %}
+    
+
+
+    {# PATH #}
+    <div class="path mode-background-2">
+        <div class="wrinner">
+            <div class="path-line">
+                <p class="title title-4 mode-color-text-1">{{ current_page | title }}</p>
+            </div>
+
+            <div class="new-client-button">
+                <a href="/plans/new" class="btn-small br-5 theme-background-hover">+ new plan</a>
+            </div>
+        </div>
+    </div>
+
+    {# GENERAL CONTENT  #}
+    <section id="general-content">
+        <div class="wrinner">
+            {% if plans %}
+                <div class="table">
+                    <div class="thead mode-background-1 br-5 pd-20">
+                        <p class="mode-color-text-1 title title-5 cl-25">Name</p>
+                        <p class="mode-color-text-1 title title-5 cl-25">Position</p>
+                        <p class="mode-color-text-1 title title-5 cl-25">Count places</p>
+                        <p class="mode-color-text-1 title title-5 control-title cl-25">Action</p>
+                    </div>
+                    <div class="tbody">
+                        {% for plan in plans %}
+                            <div class="block pd-20 br-5 {% if loop.index % 2 == 0 %}mode-background-2{% else %}mode-background-4{% endif %}">
+                                <p class="mode-color-text-1 text cl-25">{{ plan.name }}</p>
+                                <p class="mode-color-text-1 text cl-25">{{ plan.position }}</p>
+                                <p class="mode-color-text-1 text cl-25">{{ plan.count_place }}</p>
+                                <div class="control cl-25">
+                                    <a href="/plans/update/{{ plan.code }}" class="edit-btn">{% include 'icons/edit.svg' %}</a>
+                                    <span class="mode-color-text-1 text control-spliter">|</span>
+                                    <a href="/plans/remove/{{ plan.id }}" class="remove-btn">{% include 'icons/delete.svg' %}</a>
+                                </div>
+                            </div>
+                            {# SERVICES #}
+                            <div class="sub-blocks">
+                                {% if plan.services %}
+                                    {% for service in plan.services %}
+                                        <div class="service-block pd-10 br-5 {% if loop.index % 2 == 0 %}mode-background-2{% else %}mode-background-4{% endif %}">
+                                            <div class="service-name">
+                                                <p class="mode-color-text-1 text">{{ service.name | capitalize }}</p>
+                                            </div>
+                                            <div class="service-actions">
+                                                <a href="/plans/{{ plan.code }}/update-service-{{service.id}}" class="edit-btn">{% include 'icons/edit.svg' %}</a>
+                                                <span class="mode-color-text-1 text control-spliter">|</span>
+                                                <a href="/plans/{{ plan.code }}/delete-service-{{service.id}}" class="remove-btn">{% include 'icons/delete.svg' %}</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <div class="add-service" {% if plan.services %}style="margin-top: 10px;"{% endif %}>
+                                    <a href="/plans/{{ plan.code }}/add-service" class="mode-color-text-1 text">+ add service</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="no-content">
+                    <p class="mode-color-text-2 title title-4">You have no plans</p>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+
+
+
+{% endblock %}
+{% block scripts %}{% endblock %}

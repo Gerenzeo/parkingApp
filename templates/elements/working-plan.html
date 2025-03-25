@@ -1,0 +1,45 @@
+{% if plans %}
+    <div class="plans section mode-background-1 pd-20">
+        <div class="wrinner" style="flex-direction: column;">
+            <div class="plan-title">
+                <h1 class="title title-2 mode-color-text-1">Choose your plan</h1>
+            </div>
+            <div class="working-plans">
+                {% for plan in plans %}
+                    <div class="working-plan-block {% if current_user and  plan.id == current_user.plan_id %}working-plan-block-current{% else %}mode-background-1 {% endif %}">
+                        <div class="working-plan-wrapper">
+                            <div class="working-plan-block-name mode-background-2">
+                                <h3 class="title title-2 mode-color-text-1">{{ plan.name }}</h3>
+                                <p class="title title-4 mode-color-text-1">+{{ plan.services | sum(attribute='price') }}  $ per mounth</p>
+                            </div>
+                            {% if plan.services %}
+                                <div class="working-plan-block-services pd-20">
+                                    <div class="working-plan-block-services-service">
+                                        <p class="mode-color-text-1"><span class="service-icon theme-background"></span>Specify the number of parking spots</p>
+                                    </div>
+                                    {% for association in plan.services %}
+                                        <div class="working-plan-block-services-service">
+                                            <p class="mode-color-text-1"><span class="service-icon theme-background"></span>{{ association.name | capitalize}}</p>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="order-plan pd-20">
+                            {% if current_user %}
+                                {% if plan.id == current_user.plan_id %}
+                                    <p class="text mode-color-text-2 pd-10 br-5">Your current plan</p>
+                                {% else %}
+                                    <a href="/orders/order-plan/?name={{plan.name | lower }}" class="btn-big theme-background-hover br-10">Select Plan</a>
+                                {% endif %}
+                            {% else %}
+                                <a href="/orders/order-plan/?name={{plan.name | lower }}" class="btn-big theme-background-hover br-10">Select Plan</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

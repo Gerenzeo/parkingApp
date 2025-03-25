@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/parking.css') }}">
+    <style>
+        .client-info-block p a {
+            font-size: 10px;
+        }
+        .client-date {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .client-date .date-period {
+            display: flex;
+            margin-top: 10px;
+        }
+        .client-date .client-date-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+        .client-date-block  {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+        .client-date-info {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .client-date-info p {
+            font-size: 11px;
+            margin-left: 5px;
+        }
+        .path-right {
+            display: flex;
+        }
+        .spliter {
+            margin: 0px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;   
+        }
+        .restore-data {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .restore-data a {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid transparent;
+        }
+        .restore-data a svg {
+            width: 60%;
+            height: 60%;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    
+
+
+    {# PATH #}
+    <div class="path mode-background-2">
+        <div class="wrinner">
+            <div class="path-line">
+                <p class="title title-4 mode-color-text-1">{{ current_page | title }}</p>
+            </div>
+
+            <div class="path-right">
+                
+                {% if current_user.plan %}
+                    <div class="restore-data">
+                        <a href="/restore" class="mode-background-1 br-5 mode-color-text-2-hover svg-icon">{% include 'icons/table-shortcut.svg'%}</a>
+                    </div>
+                {% endif %}
+
+                <div class="spliter">
+                    <span class="title title-3 mode-color-text-2">|</span>
+                </div>
+
+                <div class="new-client-button">
+                    <a href="/clients/new" class="btn-small br-5 theme-background-hover">+ new client</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# GENERAL CONTENT  #}
+    <section id="general-content">
+        <div class="wrinner" style="align-items: start;">
+        
+            {% if not current_user.count_place %}
+
+                <div class="no-content">
+                    <p class="title title-4 mode-color-text-1">You need select plan for your parking</p>
+                    <a href="/orders" class="btn-small theme-background-hover br-5">Orders</a>
+                </div>
+
+            {% endif %}
+
+            <div class="general-content-left">
+                <div class="filter"></div>
+
+                {% include "pages/parking/elements/places.html" %}
+            </div>
+
+
+
+
+            {# RIGHT CONTENT #}
+            <div class="general-content-right">
+                {% if selected_place %}
+                    <div class="place-information mode-background-1 pd-20 br-10">
+                        <div class="place-information-close">
+                            <a href="/parking" class="svg-icon">{% include 'icons/close.svg'%}</a>
+                        </div>
+                        <div class="place-information-title">
+                            <h1 class="title title-3 mode-color-text-1">Place: {{ selected_place.index }}</h1>
+                        </div>
+                        {% if not selected_place.available %}
+                            <div class="delete-client-from-place">
+                                <a href="/parking/{{event}}/{{selected_place.unique_key}}/delete-client/clean">delete client</a>
+                            </div>
+                        {% endif %}
+                        <div class="place-information-services">
+
+
+
+                            {# SERVICES #}
+                            {% if services_for_selected_place %}
+                                {% set active_service_ids = place_services | map(attribute="service_id") | list %}  {# Собираем ID активных сервисов #}
+
+                                {% for service in services_for_selected_place %}
+                                    {% if not service.custom and service.id not in active_service_ids %}
+                                        <a href="/parking/{{ event }}/{{ selected_place.unique_key }}/{{ service.id }}/turn-on" class="svg-icon">
+                                            {{ service.icon_svg | safe }}
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+
+                            {# PLACE SERVICES #}
+                            {% if place_services %}
+                                {% for place_service in place_services %}
+                                    {% if place_service.service_active %}
+                                        <a href="/parking/{{ event }}/{{ selected_place.unique_key }}/{{ place_service.id }}/turn-off" class="svg-icon active">
+                                            {{ place_service.service.icon_svg | safe }}
+                                        </a>
+                                    {% else %}
+                                        <a href="/parking/{{ event }}/{{ selected_place.unique_key }}/{{ place_service.id }}/turnon" class="svg-icon">
+                                            {{ place_service.service.icon_svg | safe }}
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+
+                            
+
+                            {# <a href="/parking/{{event}}/{{selected_place.unique_key}}/camera" class="svg-icon {% if selected_place.is_camera %}active{% endif %}">
+                                {% include 'icons/camera.svg'%}
+                            </a>
+                            <a href="/parking/{{event}}/{{selected_place.unique_key}}/charge" class="svg-icon {% if selected_place.is_charger %}active{% endif %}">
+                                {% include 'icons/charge.svg'%}
+                            </a>
+                            <a href="/parking/{{event}}/{{selected_place.unique_key}}/wash" class="svg-icon {% if selected_place.is_wash %}active{% endif %}">
+                                {% include 'icons/wash.svg'%}
+                            </a>
+                            <a href="/parking/{{event}}/{{selected_place.unique_key}}/exit" class="svg-icon {% if selected_place.next_to_exit %}active{% endif %}">
+                                {% include 'icons/exit.svg'%}
+                            </a>
+                         #}
+                        
+                        </div>
+
+                        {% if selected_place.available %}
+                            <div class="place-information-status">
+                                <p class="title title-5 mode-color-text-2">Status: {% if selected_place.available %}<span class="status-available">available</span>{% else %}<span class="status-not-available">not available</span>{% endif %}</span></p>
+                            </div>
+                        {% endif %}
+
+                        
+
+                        {% if event == 'add-client' %}
+                            <div class="event-add-client">
+                                <div class="event-add-client-tabs">
+                                    <a class="title title-5 {% if type == 'new-client' %}mode-color-text-1 active{% else %}mode-color-text-2{% endif %}" href="/parking?place={{selected_place.unique_key}}&event=add-client&type=new-client">New client</a>
+                                    <a class="title title-5 {% if type == 'existing-client' %}mode-color-text-1 active{% else %}mode-color-text-2{% endif %}"  href="/parking?place={{selected_place.unique_key}}&event=add-client&type=existing-client">Existing client</a>
+                                </div>
+                            </div>
+
+                            {# NEW CLIENT #}
+                            {% if type == 'new-client' %}
+                                {% include "pages/parking/elements/new_client.html" %}
+                            {% endif %}
+
+                            {# EXISTING CLIENT #}
+                            {% if type == 'existing-client' %}
+                                {% include "pages/parking/elements/existing_client.html" %}
+                            {% endif %}
+                        {% endif %}
+
+                        
+                        {% include "pages/parking/elements/show_client.html" %}
+                    
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+{% endblock %}
+{% block scripts %}{% endblock %}

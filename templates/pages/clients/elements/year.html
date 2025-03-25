@@ -1,0 +1,26 @@
+<!-- Car Year -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3">Car year</label>
+        {% if year_message %}
+            <p class="system-message">{{ year_message }}</p>
+        {% endif %}
+    </div>
+    {% if client %}
+        {# UPDATE #}
+        <select class="mode-background-3 mode-color-text-1" name="year">
+            <option value="no-selected" {% if not client.car_year or client.car_year == "no-selected" %}selected{% endif %}>Choose year</option>
+            {% for ye in range(date.year, 1989, -1) %}
+                <option value="{{ ye }}" {% if client.car_year|int == ye %}selected{% endif %}>{{ ye }}</option>
+            {% endfor %}
+        </select>
+    {% else %}
+        {# CREATE #}
+        <select class="mode-background-3 mode-color-text-1" name="year">
+            <option value="no-selected" {% if not year or year == "no-selected" %}selected{% endif %}>Choose year</option>
+            {% for ye in range(date.year, 1989, -1) %}
+                <option value="{{ ye }}" {% if year|int == ye %}selected{% endif %}>{{ ye }}</option>
+            {% endfor %}
+        </select>
+    {% endif %}
+</div>

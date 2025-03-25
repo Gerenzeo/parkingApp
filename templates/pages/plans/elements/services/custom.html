@@ -1,0 +1,10 @@
+<!-- SVG ICON -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3" for="custom">Default service</label>
+        {% if custom_message %}
+            <p class="system-message">{{ custom_message }}</p>
+        {% endif %}
+    </div>
+    <input style="width: 20px;" id="custom" type="checkbox" name="custom" class="{% if custom_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if service %}{% if service.custom %}checked{% else %}{% if tmp_custom %}checked{%endif%}{% endif %}{% endif %}>
+</div>

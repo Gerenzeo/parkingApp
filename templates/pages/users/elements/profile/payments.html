@@ -1,0 +1,100 @@
+{% if tab == "payments" %}
+    <div class="profile-content-block">
+        <div class="profile-content-block-left">
+            
+            <div class="profile-content-block-item">
+                {% if current_user.card_number %}
+                    <div class="payment-card">
+                        <div class="payment-card-delete">
+                            <a href="/delete-payment-card" class="mode-background-2 br-5">{% include 'icons/delete.svg' %}</a>
+                        </div>
+                        <div class="payment-card-number">
+                            <p class="title-5 mode-color-text-2">Card number</p>
+                            <h3 class="title-4 mode-color-text-1">{{ current_user.card_number }}</h3>
+                        </div>
+                        <div class="payment-card-date">
+                            <p class="title-5 mode-color-text-2">Expire date</p>
+                            <h3 class="title-4 mode-color-text-1">{{ current_user.card_expired_date }}</h3>
+                        </div>
+                        <div class="payment-card-cvv title-4 mode-color-text-1">
+                            <p class="title-5 mode-color-text-2">CVV</p>
+                            <h3 class="title-4 mode-color-text-1">{{ current_user.card_cvv }}</h3>
+                        </div>
+                    </div>
+                {% else %}
+                    <form method="post" action="/add-payment-card">
+                        <div class="wrapper-input-fields-2">
+                            {% include "/pages/users/elements/profile/forms_elements/card_number.html" %}
+                            {% include "/pages/users/elements/profile/forms_elements/card_cvv.html" %}
+                        </div>
+
+                        <div class="wrapper-input-fields-2">
+                            {% include "/pages/users/elements/profile/forms_elements/card_mounth.html" %}
+                            {% include "/pages/users/elements/profile/forms_elements/card_year.html" %}
+                        </div>
+
+                        <!-- BUTTON -->
+                        <div class="input-field-button">
+                            <button class="btn-small br-5 theme-background-hover">Add card</button>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+
+            {# BALANCE #}
+            <div class="profile-content-block-item">
+                <p class="title-5 mode-color-text-2">Balance</p>
+                <h3 class="title-4 mode-color-text-1">{{ current_user.balance }}$</h3>
+            </div>
+
+        
+        </div>
+        <div class="profile-content-block-right">
+
+            {# DEPOSIT TO CARD #}
+            <div class="profile-content-block-item">
+                <a href="/profile?tab=payments&method=deposit" class="title-5 {% if method == 'deposit' %}mode-color-text-1{% else %}mode-color-text-2-hover{% endif %}">Deposit to card</a>
+                <span class="title title-4 mode-color-text-2" style="margin: 0px 10px;">|</span>
+                <a href="/profile?tab=payments&method=transfer" class="title-5 {% if method == 'transfer' %}mode-color-text-1{% else %}mode-color-text-2-hover{% endif %}">Transfer from card</a>
+            </div>
+            
+            {% if method == 'deposit' %}
+                <form method="post" action="/profile/deposit/deposit-money">
+                    <!-- CASH -->
+                    <div class="input-field">
+                        <div class="input-field-label">
+                            <label class="mode-color-text-1 title title-3" for="cash">Deposit amount</label>
+                            {% if cash_message %}
+                                <p class="system-message">{{cash_message}}</p>
+                            {% endif %}
+                        </div>
+                        <input type="text" placeholder="1000$" name="cash" class="{% if cash_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if tmp_cash %}value="{{tmp_cash}}"{%endif%} maxlength="5">
+                    </div>
+                    <!-- BUTTON -->
+                    <div class="input-field-button">
+                        <button class="btn-small br-5 theme-background-hover">Deposit</button>
+                    </div>
+                </form>
+            {% endif %}
+
+            {% if method == 'transfer' %}
+                <form method="post" action="/profile/transfer/transfer-money">
+                    <!-- CASH -->
+                    <div class="input-field">
+                        <div class="input-field-label">
+                            <label class="mode-color-text-1 title title-3" for="cash">Transfer amount</label>
+                            {% if cash_message %}
+                                <p class="system-message">{{cash_message}}</p>
+                            {% endif %}
+                        </div>
+                        <input type="text" placeholder="1000$" name="cash" class="{% if cash_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if tmp_cash %}value="{{tmp_cash}}"{%endif%} maxlength="5">
+                    </div>
+                    <!-- BUTTON -->
+                    <div class="input-field-button">
+                        <button class="btn-small br-5 theme-background-hover">Transfer</button>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

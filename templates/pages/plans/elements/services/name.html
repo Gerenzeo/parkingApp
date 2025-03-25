@@ -1,0 +1,10 @@
+<!-- NAME -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3" for="name">Name</label>
+        {% if service_name_message %}
+            <p class="system-message">{{ service_name_message }}</p>
+        {% endif %}
+    </div>
+    <input placeholder="Example: Cleaning" maxlength="100" type="text" id="name" name="name" class="{% if service_name_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if service %}value="{{ service.name }}" {% else %}{% if tmp_service_name %}value="{{ tmp_service_name }}"{% endif %}{% endif %}>
+</div>

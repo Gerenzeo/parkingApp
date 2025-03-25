@@ -1,0 +1,10 @@
+<!-- COUNT PLACE -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3" for="position">Position</label>
+        {% if position_message %}
+            <p class="system-message">{{position_message}}</p>
+        {% endif %}
+    </div>
+    <input maxlength="5" type="text" id="position" name="position" class="{% if position_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if plan %}value="{{ plan.position }}"{% else %}{% if tmp_position %}value="{{tmp_position}}"{%endif%}{% endif %}>
+</div>

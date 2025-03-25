@@ -1,0 +1,76 @@
+<!-- Car Color -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3">Car color</label>
+        {% if color_message %}
+            <p class="system-message">{{ color_message }}</p>
+        {% endif %}
+    </div>
+    <div class="color-options">
+        <div class="color-option" style="background-color: red;" onclick="setColor('Red', this)"></div>
+        <div class="color-option" style="background-color: blue;" onclick="setColor('Blue', this)"></div>
+        <div class="color-option" style="background-color: green;" onclick="setColor('Green', this)"></div>
+        <div class="color-option" style="background-color: black;" onclick="setColor('Black', this)"></div>
+        <div class="color-option" style="background-color: white;" onclick="setColor('White', this)"></div>
+        <div class="color-option" style="background-color: yellow;" onclick="setColor('Yellow', this)"></div>
+        <div class="color-option" style="background-color: gray;" onclick="setColor('Gray', this)"></div>
+        <div class="color-option" style="background-color: purple;" onclick="setColor('Purple', this)"></div>
+        <div class="color-option" style="background-color: orange;" onclick="setColor('Orange', this)"></div>
+    </div>
+    <input type="hidden" name="color" class="mode-background-3 mode-color-text-1" id="colorInput" autocomplete="off" 
+    {% if client %}
+        value="{{client.color}}"
+    {% else %}
+        value="{% if color %}{{ color }}{% endif %}"
+    {% endif %} 
+    readonly>
+</div>
+
+<script>
+    function setColor(color, element) {
+        document.getElementById('colorInput').value = color; // Устанавливаем выбранный цвет в поле
+        
+        // Убираем класс 'selected' у всех цветных блоков
+        const allOptions = document.querySelectorAll('.color-option');
+        allOptions.forEach(option => option.classList.remove('selected'));
+        
+        // Добавляем класс 'selected' к текущему выбранному блоку
+        element.classList.add('selected');
+    }
+
+    // Функция для установки выбранного цвета при загрузке страницы
+    document.addEventListener("DOMContentLoaded", function() {
+        let selectedColor = document.getElementById('colorInput').value;
+        if (selectedColor) {
+            const allOptions = document.querySelectorAll('.color-option');
+            allOptions.forEach(option => {
+                if (option.style.backgroundColor.toLowerCase() === selectedColor.toLowerCase()) {
+                    option.classList.add('selected');
+                }
+            });
+        }
+    });
+</script>
+
+<style>
+    .color-options {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .color-option {
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 2px solid #ccc;
+        transition: width 0.3s, height 0.3s; /* Плавное изменение размера */
+    }
+    .color-option:hover {
+        border-color: #000;
+    }
+    .color-option.selected {
+        width: 60px;
+        border-color: #fff;
+    }
+</style>

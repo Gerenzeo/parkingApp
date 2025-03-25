@@ -1,0 +1,10 @@
+<!-- PRICE -->
+<div class="input-field">
+    <div class="input-field-label">
+        <label class="mode-color-text-1 title title-3" for="price">Price</label>
+        {% if price_message %}
+            <p class="system-message">{{price_message}}</p>
+        {% endif %}
+    </div>
+    <input placeholder="Example: 10" maxlength="5" type="text" id="price" name="price" class="{% if price_message %}bound-element error-border{%endif%} mode-background-3 mode-color-text-1" autocomplete="off" {% if service %}value="{{ service.price }}"{% else %}{% if tmp_price %}value="{{tmp_price}}"{%endif%}{% endif %}>
+</div>

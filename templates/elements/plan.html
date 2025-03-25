@@ -1,0 +1,23 @@
+{% if current_user %}
+    <div class="right-section-title">
+        <h3 class="mode-color-title">Current Plan:
+            {% if current_user.plan %}
+                <span class="theme-color">{{ current_user.plan.name }}</span>
+            {% else %}
+                <span class="theme-color">Plan not selected</span>
+            {% endif %}
+        </h3>
+    </div>
+    <div class="plan">
+        <p class="mode-color-title">places: <span class="mode-color-title">
+            <span>{{ current_user.places | selectattr("available", "equalto", False) | list | length }}</span>
+            /</span><span class="theme-color">50</span></p>
+        <p class="mode-color-title">Status: 
+            {% if current_user.plan %}
+                <span class="status-working">working</span>
+            {% else %}
+                <span class="status-stopped">stopped</span>
+            {% endif %}
+        </p>
+    </div>
+{% endif %}
