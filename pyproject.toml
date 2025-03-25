@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = ""
+authors = ["gerenzeo <i.gerenzeo@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "0.111.0"
+alembic = "1.13.0"
+bcrypt = "4.0.1"
+email-validator = "2.1.1"
+python-dotenv = "1.0.0"
+python-jose = "3.3.0"
+sqlalchemy = "2.0.23"
+cloudinary = "1.40.0"
+uvicorn = "0.24.0.post1"
+itsdangerous = "2.2.0"
+asyncpg = "0.29.0"
+passlib = "1.7.4"
+faker = "35.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
