@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ subject }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+        
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        a,p,h1,h2,h3,span,div {
+            font-family: "Mukta", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .message-section {
+            padding: 50px;
+        }
+        .top-section p,
+        .top-section span {
+            font-size: 13px;
+        }
+        .top-section span {
+            font-weight: bold;
+        }
+        .message-body p {
+            color: #333;
+            font-size: 13px;
+            text-align: justify;
+            margin-top: 5px;
+            font-weight: 100;
+        }
+        .dashed-line {
+            padding: 30px;
+            height: 1px;
+            border-bottom: 1px dashed #161616;
+            margin-bottom: 50px;
+        }
+        .price-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            height: 20px;
+        }
+        .price-block p {
+            width: 35%;
+            border-bottom: 1px dotted #1f1f1f;
+        }
+        .price-block .dotted-line {
+            width: 45%;
+            border-bottom: 1px dotted #1f1f1f;
+        }
+        .price-block span {
+            width: 20%;
+            border-bottom: 1px dotted #1f1f1f;
+            text-align: end;
+        }
+        .information {
+            margin-top: 40px;
+        }
+        .total-price {
+            display: flex;
+        }
+        .total-price p,
+        .total-price span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .total-price span {
+            margin-left: 10px;
+        }
+        .payment-button {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .payment-button a {
+            background: #1f1f1f;
+            color: #f1f1f1;
+            text-transform: uppercase;
+            font-size: 14px;
+            text-decoration: none;
+            width: 150px;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all .5s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <section id="message">
+        <div class="message-section top-section">
+            <h3>Dear, {{ recipient.first_name }} {{ recipient.last_name }}!</h3>
+            <p>This is a friendly reminder that the payment for your parking space No. <b>{{ place.index }}</b>is due for the period <br><b>From: <i>{{ place.start_date.strftime("%d %B %Y") }}</i></b> - <b>To: <i>{{ place.end_date.strftime("%d %B %Y") }}</i></b>.</p>
+            <div class="information">
+
+                {% if plan.services %}
+                    {% for service in plan.services %}
+                        {% if service.custom %}
+                            <div class="price-block">
+                                <p>{{ service.name | title }}</p>
+                                <div class="dotted-line"></div>
+                                <span>{{ service.price }}$</span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+
+                {% if place_services %}
+                    {% for place_service in place_services %}
+                        {% if place_service.service_active %}
+                            <div class="price-block">
+                                <p>{{ place_service.service.name }}</p>
+                                <div class="dotted-line"></div>
+                                <span>{{ place_service.service.price }}$</span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+
+
+                
+
+                {% set total_custom = plan.services | selectattr("custom") | map(attribute="price") | sum %}
+                {% set total_services = place_services | selectattr("service_active") | map(attribute="service.price") | sum %}
+                {% set total_price = total_custom + total_services %}
+
+                <div class="total-price">
+                    <p>Total:</p>
+                    <span>{{ total_price }}$</span>
+                </div>
+
+
+
+                <div class="payment-button">
+                    <a href="{{ request.base_url }}payments/check-{{recipient.unique_code}}-{{place.unique_key}}-{{email_token}}">Pay {{ total_price }}$</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-section middle-section">
+            <div class="message-body">
+                <p>This message was sent from a Python script connected to the SMTP server of Gmail. We are thrilled to reach out to you with this automated email generated as part of a test to demonstrate how Python can be used for email automation.</p>
+                <p>The purpose of this message is to show you how powerful and flexible Python can be when it comes to automating tasks such as sending emails with customized content. Whether it's for newsletters, notifications, or any other purpose, this script can be adapted to suit your needs.</p>
+                <div class="dashed-line"></div>
+                <p>We appreciate your understanding and cooperation in this demonstration. Please note that this is an automated message, and there is no need to reply. Your response will not be monitored, as this inbox is not attended.</p>
+                <p>Thank you for your time, and we hope you find this example useful. Should you have any questions or require further assistance, please reach out through the appropriate channels.</p>
+            </div>
+        </div>
+        <div class="message-section bottom-section">
+            <p style="font-size: 0.9em; color: gray;">
+                Please do not reply to this email. This is an automated message, and responses are not monitored.
+            </p>
+        </div>
+    </section>
+</body>
+</html>
