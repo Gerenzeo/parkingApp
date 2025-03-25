@@ -1,0 +1,61 @@
+/* DEFAULT COLORS */
+.theme-background,
+.menu-circle-active {
+    background: #5077e9 !important;
+}
+.theme-background-hover {
+    background: #5077e9;
+}
+.theme-background-hover:hover {
+    background: #334c99;
+}
+.theme-color,
+.theme-color-hover,
+#right-section .menu a.active {
+    color: #5077e9;
+}
+.theme-color-hover:hover {
+    color: #334c99;
+}
+
+/* MODE colors */
+
+/* BACKGROUND COLOR 1 */
+.dark .mode-background-1 {
+    background: #000;
+    border-color: #1f1f1f !important;
+}
+
+/* BACKGROUND COLOR 2 */
+.dark .mode-background-2,
+.dark .mode-background-2-hover {
+    background: #0b0b0b;
+}
+.dark .mode-background-2-hover:hover {
+    background: #1e1e1e;
+}
+
+/* BACKGROUND COLOR 3 */
+.dark .mode-background-3 {
+    background: #1e1e1e;
+}
+
+/* BACKGROUND COLOR 4 */
+.dark .mode-background-4 {
+    background: #3e3d3d;
+}
+
+
+.dark .mode-color-text-1,
+.dark .svg-icon {
+    color: #f1f1f1;
+    fill: #f1f1f1;
+}
+
+.dark .mode-color-text-2,
+.dark .mode-color-text-2-hover {
+    color: #606060;
+}
+.dark .mode-color-text-2-hover:hover {
+    color: #f1f1f1;
+}

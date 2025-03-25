@@ -1,0 +1,216 @@
+#general-content {
+    display: flex;
+    align-items: start;
+}
+#general-content .general-content-left {
+    width: 60%;
+}
+#general-content .general-content-right {
+    width: 40%;
+    margin-left: 20px;
+}
+.parking-places {
+    display: flex;
+    flex-direction: column;
+}
+.parking-places .wrapper-places {
+    display: flex;
+    flex-wrap: wrap;
+}
+.place-block {
+    min-width: 90px;
+    height: 100px;
+    margin-right: 10px;
+    position: relative;
+    background: #000;
+    border: 2px solid #f1f1f1;
+    border-bottom: 0;
+    margin-bottom: 10px;
+}
+.place-block-number {
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #f1f1f1;
+}
+.status {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+.status-open {
+    background: #10c077;
+}
+.status-close {
+    background: #c01033;
+}
+.add-client {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 15px;
+}
+.add-client svg {
+    color: #5077e9;
+    opacity: 0.5;
+    transition: all .5s ease-in;
+}
+.add-client svg:hover {
+    opacity: 1;
+    transition: all .5s ease-in;
+}
+.place-information-close {
+    display: flex;
+    justify-content: end;
+}
+.place-information-close .svg-icon {
+    width: 25px;
+    height: 2px;
+    opacity: 0.5;
+    transition: all .5s ease-in;
+}
+.place-information-close .svg-icon:hover {
+    opacity: 1;
+}
+.place-information-close .svg-icon svg {
+    width: 25px;
+    height: 25px;
+}
+.status-available {
+    color: #10c077;
+}
+.status-not-available {
+    color: #c01033;
+}
+.place-information-services {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.place-information-services .svg-icon {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: all .5s ease-in;
+}
+.place-information-services .svg-icon:last-child {
+    margin-right: 0;
+}
+.place-information-services .svg-icon svg {
+    width: 70%;
+    height: 50%;
+    color: #1e1e1e;
+}
+.place-information-services .svg-icon:hover,
+.place-information-services a.active {
+    border: 1px solid #10c077;
+}
+.place-information-services .svg-icon:hover svg,
+.place-information-services a.active svg {
+    color: #10c077;
+}
+.event-add-client-tabs {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.event-add-client-tabs a {
+    margin-right: 10px;
+}
+.event-add-client-tabs a.active {
+    border-bottom: 1px solid #fff;
+}
+.place-block-open {
+    opacity: 0.5;
+    transition: all .5s ease-in;
+}
+.place-block-open:hover {
+    opacity: 1;
+    transition: all .5s ease-in;
+}
+.show-client {
+    width: 15px;
+    height: 15px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+.show-client a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.show-client a svg {
+    width: 10px;
+    height: 10px;
+}
+.client-information-blocks {
+    margin-top: 30px;
+    display: flex;
+    align-items: start;
+}
+.client-information-blocks .client-information-blocks-left, .client-information-blocks .client-information-blocks-right {
+    width: 50%;
+}
+.client-info-block {
+    margin-bottom: 10px;
+}
+.client-info-block:last-child {
+    margin-bottom: 0;
+}
+.place-services {
+    display: flex;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+.place-services .places-services-block {
+    width: 7px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2px;
+    border-radius: 2px;
+}
+.place-services .places-services-block svg {
+    width: 10px;
+    height: 10px;
+    color: #10c077;
+}
+.delete-client-from-place a {
+    text-transform: uppercase;
+    color: #fff;
+    background: #c01033;
+    opacity: 0.5;
+    padding: 8px;
+    display: flex;
+    font-size: 9px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    margin-top: 10px;
+    transition: all .5s ease-in;
+}
+.delete-client-from-place a:hover {
+    opacity: 1;
+    transition: all .5s ease-in;
+}

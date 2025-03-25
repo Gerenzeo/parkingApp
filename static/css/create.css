@@ -1,0 +1,35 @@
+
+form {
+    width: 100%;
+    border: 1px solid transparent;
+}
+.form-title {
+    margin-bottom: 30px;
+}
+.input-field {
+    margin-bottom: 20px;
+}
+.input-field:last-child {
+    margin-bottom: 0;
+}
+.input-field-2 {
+    display: flex;
+    justify-content: space-between;
+}
+.input-field-2 .input-field {
+    width: 50%;
+    margin-right: 10px;
+}
+.input-field-2 .input-field:last-child {
+    margin-right: 0;
+}
+.checkboxes .input-field {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.checkboxes .input-field input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}

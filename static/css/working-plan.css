@@ -1,0 +1,74 @@
+.plans {
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    padding: 100px 20px;
+}
+.working-plans {
+    display: flex;
+    justify-content: start;
+    margin-top: 100px;
+    flex-wrap: wrap;
+}
+.working-plan-block {
+    width: 30%;
+    border: 1px solid transparent;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    overflow: hidden;
+}
+.working-plan-block:last-child {
+    margin-right: 0;
+}
+.working-plan-block-name {
+    padding: 20px;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    /* border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-top: -10px; */
+}
+.working-plan-block-services {
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+}
+.working-plan-block-services-service {
+    margin-bottom: 20px;
+}
+.working-plan-block-services-service p {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+.service-icon {
+    display: flex;
+    width: 5px;
+    height: 16px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+.order-plan {
+    width: 100%;
+    display: flex;
+}
+.order-plan a {
+    width: 100%;
+    text-decoration: none;
+}
+.working-plan-block-current {
+    border: 1px solid #3bbb34;
+}
+.working-plan-block-current .working-plan-block-name, .working-plan-block-current .service-icon {
+    background: #3bbb34 !important;
+}
+.working-plan-block-current .order-plan p {
+    background: #3bbb34;
+    color: #fff;
+}

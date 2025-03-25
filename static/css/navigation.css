@@ -1,0 +1,121 @@
+#navigation {
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid transparent;
+    z-index: 8000;
+}
+#navigation .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* LOGOTYPE */
+#navigation .logotype {
+    width: 60px;
+    height: 30px;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+}
+#navigation .logotype .logotype-circle {
+    border-radius: 50px;
+}
+#navigation .logotype .logotype-circle-left {
+    width: 30px;
+    height: 30px;
+    background: #fff;
+}
+#navigation .logotype .logotype-circle-right {
+    width: 25px;
+    height: 25px;
+    margin-left: -15px;
+}
+
+/* MENU BUTTON */
+#navigation .menu-btn {
+    margin-right: 20px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+}
+#navigation .menu-btn-line {
+    height: 3px;
+    border-radius: 5px;
+    background: #fff;
+    position: absolute;
+    right: 3px;
+}
+#navigation .menu-btn-line-top {
+    top: 5px;
+    width: 40%;
+}
+#navigation .menu-btn-line-middle {
+    top: 12px;
+    width: 60%;
+}
+#navigation .menu-btn-line-bottom {
+    top: 19px;
+    width: 80%;
+}
+
+#navigation .menu-btn.active .menu-btn-line-top,
+#navigation .menu-btn.active .menu-btn-line-bottom {
+    width: 80%;
+    top: 12px;
+}
+
+/* USER MENU */
+.user-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    border-left: 1px solid #1f1f1f;
+}
+.user-menu a {
+    text-decoration: none;
+    text-align: center;
+}
+
+.menu-title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.menu-title:first-child {
+    margin-top: 0px;
+}
+/* MENU */
+#right-section .menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#right-section .menu a {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+#right-section .menu a.active span.menu-circle {
+    width: 25px;
+    height: 5px;
+}
+#right-section .menu a:hover span.menu-circle {
+    width: 25px;
+    height: 5px;
+}
+#right-section .menu a span.menu-circle {
+    width: 5px;
+    height: 25px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+

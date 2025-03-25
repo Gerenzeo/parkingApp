@@ -1,0 +1,109 @@
+
+
+/* GENERAL CONTENT */
+#general-content {
+    padding: 20px;
+}
+/* END GENERAL CONTENT */
+
+/* TABLE */
+.table {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.table .thead {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    border: 1px solid transparent;
+}
+.table .tbody {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    flex-direction: column;
+}
+.thead .control-title,
+.tbody .control {
+    text-align: right;
+}
+.tbody .control {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.tbody .control a {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+.control-spliter {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.table .tbody .block {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    margin-top: 5px;
+}
+.cl-5 {
+    width: 5%;
+}
+.cl-10 {
+    width: 10%;
+}
+.cl-15 {
+    width: 15%;
+}
+.cl-20 {
+    width: 20%;
+}
+.cl-25 {
+    width: 25%;
+}
+.cl-30 {
+    width: 30%;
+}
+.cl-35 {
+    width: 35%;
+}
+.cl-40 {
+    width: 40%;
+}
+.cl-45 {
+    width: 45%;
+}
+.cl-40 {
+    width: 40%;
+}
+.cl-50 {
+    width: 50%;
+}
+.cl-55 {
+    width: 55%;
+}
+.cl-60 {
+    width: 60%;
+}
+.cl-65 {
+    width: 65%;
+}
+.cl-70 {
+    width: 70%;
+}
+.cl-75 {
+    width: 75%;
+}
+.cl-80 {
+    width: 80%;
+}
+/* END TABLE */

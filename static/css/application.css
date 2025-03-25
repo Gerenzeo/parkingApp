@@ -1,0 +1,121 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    transition: all .4s ease-in;
+}
+input, label, a, div, span, li, p {
+    font-family: sans-serif;
+}
+#initialization {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ededed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#initialization form {
+    background: #fff;
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #bebebe;
+    border-radius: 5px;
+}
+#initialization form .form-title {
+    margin-bottom: 50px;
+}
+#initialization form .form-title h2 {
+    font-size: 30px;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+#initialization form .form-title h3 {
+    font-size: 18px;
+    font-weight: 500;
+}
+#initialization .input-field-wrapper-2 {
+    display: flex;
+}
+#initialization .input-field-wrapper-2 .input-field {
+    margin-right: 10px;
+    width: 50%;
+}
+#initialization .input-field-wrapper-2 .input-field:last-child {
+    margin-right: 0;
+}
+#initialization form .input-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+#initialization form .input-field label,
+#initialization form .input-field span.error-message {
+    font-size: 12px;
+}
+#initialization .error-message {
+    color: #c84b4b;
+}
+#initialization .input-field-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 2px;
+}
+#initialization form .input-field input {
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 3px;
+}
+#initialization .input-field-button {
+    margin-top: 20px;
+    display: flex;
+
+}
+#initialization .input-field-left, 
+#initialization .input-field-right {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+#initialization .input-field-right {
+    justify-content: end;
+}
+#initialization .input-field-button button,
+#initialization .input-field-button a {
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    min-width: 120px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    text-decoration: none;
+    background: #333;
+    text-transform: uppercase;
+    width: 200px;
+}
+#initialization .input-field-button button {
+    width: 120px;
+    background: #4b73c8;
+    color: #fff;
+}
+#initialization .input-field-button button:hover {
+    background: #334e88;
+}
+#initialization .input-field-button a {
+    width: 100px;
+    background: #999;
+    color: #333;
+}
+#initialization .input-field-button a:hover {
+    background: #888;
+    color: #111;
+}

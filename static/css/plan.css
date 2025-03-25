@@ -1,0 +1,27 @@
+.plan {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+.plan p {
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+.right-section-title a {
+    font-weight: bold;
+}
+.plan p span {
+    font-weight: bold;
+}
+.plan p:last-child {
+    margin-bottom: 0;
+}
+.plan .status-working {
+    color: #3bbb34;
+}
+.plan .status-stopped {
+    color: #9d4040;
+}

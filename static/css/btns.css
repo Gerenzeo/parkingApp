@@ -1,0 +1,45 @@
+.btn-big {
+    min-width: 250px;
+    max-width: fit-content;
+    height: 50px;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #f1f1f1;
+    color: #f1f1f1;
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all .3s ease-in;
+}
+.btn-small {
+    max-width: fit-content;
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #f1f1f1;
+    color: #f1f1f1;
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all .3s ease-in;
+}
+
+.edit-btn {
+    background: #327fae;
+}
+.edit-btn:hover {
+    background: #2b6b94;
+}
+.remove-btn {
+    background: #9d4040;
+}
+.remove-btn:hover {
+    background: #652929;
+}
